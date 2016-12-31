@@ -32,14 +32,14 @@ var permuteRGB = function(){
 }
 
 // permuteRGB()
-
+var numColors = 15
 var color
 
 var colorLocator = []
 
 var id
 
-for (var i = 0; i < 15; i++) {
+for (var i = 0; i < numColors; i++) {
 
   // designate id
   id = "i"+i
@@ -57,9 +57,16 @@ for (var i = 0; i < 15; i++) {
   // console.log('offset: ',$("#i"+i).offset())
 
 
-  var beta = $("body").append("<div id=\"z"+i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:black; left:20px; top:20px;\"></div>")
+  // var beta = $("body").append("<div id=\"z"+i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:black; left:20px; top:20px;\"></div>")
   document.getElementById(id).addEventListener("click",function(){
     window.scrollTo(0,0)
   })
+}
+
+var topval = 0
+for (var i = 0; i < numColors; i++) {
+  topval=i*20
+  console.log(colorLocator[i].color.r)
+  var beta = $("body").append("<div id=\"z"+i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:20px;\"></div>")
 }
 console.log('color locator array : ', colorLocator)
