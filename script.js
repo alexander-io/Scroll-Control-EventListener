@@ -12,11 +12,11 @@ var div = $("#i0")
 var incrementColor = function(step){
 
   if (r < 256){
-    r++
+    r+=64
   } else if (g < 256){
-    g++
+    g+=64
   } else {
-    b++
+    b+=64
   }
   // console.log(r,g,b)
 }
@@ -41,10 +41,15 @@ permuteRGB()
 // console.log(rgbvals)
 // console.log(div)
 var color
-for (var i = 0; i < 1000; i++) {
+// var tuple
+var colorLocator = []
+var id
+for (var i = 0; i < 15; i++) {
   // var div = $("#i"+i)
+  id = "i"+i
   // console.log($(".container"))
-  $(".section").append("<div class=\"row\"><div class=\"col s12 m12 l12\" id=\"i" +i+"\"></div></div>")
+  var alpha = $(".section").append("<div class=\"row\"><div class=\"col s12 m12 l12\" id=\"i" +i+"\"></div></div>")
+  // console.log('scroll: '
   // var alpha = $(".row")
   // var alpha = div
   color = (i*50).toString(16)
@@ -53,13 +58,32 @@ for (var i = 0; i < 1000; i++) {
 
   // $("#i"+i).css("background-color", "#"+color)
   incrementColor(5)
+
   $("#i"+i).css("background-color", "rgb(" + r + "," + g + "," + b + ")")
-  $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
+  colorLocator.push({color:{r:r,g:g,b:b}, id:"#i"+i})
+  // $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
+  console.log(i)
+
+  document.getElementById(id).addEventListener("click",function(){console.log('hello')})
+
 
 
 
 }
 
+console.log(colorLocator)
+// console.log(document.getElementById('i6').scrollTop)
+// console.log(document.getElementById('i6'))
+// var top  = document.getElementById('i6').scrollY
+// console.log(document.getElementById('i6').scrollTop.scrollY)
+
+console.log($("#i6"))
+// var el = document.getElementById('i7');
+//
+// // get scroll position in px
+// console.log(el.scrollLeft, el.scrollTop);
+// console.log(document.getElementById('i6'))
+// console.log($("#i6").scroll())
 
 // var color
 // for (var i = 0; i < 10; i++) {
