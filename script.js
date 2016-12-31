@@ -62,31 +62,9 @@ for (var i = 0; i < 15; i++) {
   $("#i"+i).css("background-color", "rgb(" + r + "," + g + "," + b + ")")
   colorLocator.push({color:{r:r,g:g,b:b}, id:"#i"+i})
   // $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
-  console.log(i)
+  console.log('offset: ',$("#i"+i).offset())
 
-  document.getElementById(id).addEventListener("click",function(){console.log('hello')})
-
-
-
-
+  document.getElementById(id).addEventListener("click",function(){
+    window.scrollTo(0,0)
+  })
 }
-
-console.log(colorLocator)
-// console.log(document.getElementById('i6').scrollTop)
-// console.log(document.getElementById('i6'))
-// var top  = document.getElementById('i6').scrollY
-// console.log(document.getElementById('i6').scrollTop.scrollY)
-
-console.log($("#i6"))
-// var el = document.getElementById('i7');
-//
-// // get scroll position in px
-// console.log(el.scrollLeft, el.scrollTop);
-// console.log(document.getElementById('i6'))
-// console.log($("#i6").scroll())
-
-// var color
-// for (var i = 0; i < 10; i++) {
-//   // console.log(i*16.toString(16))
-//   console.log((i*15).toString(16))
-// }
