@@ -56,6 +56,8 @@ for (var i = 0; i < 15; i++) {
   // $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
   // console.log('offset: ',$("#i"+i).offset())
 
+
+  var beta = $("body").append("<div id=\"z"+i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:black; left:20px; top:20px;\"></div>")
   document.getElementById(id).addEventListener("click",function(){
     window.scrollTo(0,0)
   })
