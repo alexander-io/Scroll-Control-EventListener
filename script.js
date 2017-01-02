@@ -98,6 +98,7 @@ for (var i = 0; i < numColors; i++) {
 
 
 // cast a number of sin waves at a specified frequency
+var sineVals = []
 var frequency = .3;
 for (var i = 0; i < 32; ++i)
 {
@@ -106,5 +107,18 @@ for (var i = 0; i < 32; ++i)
   the precise value where it repeats is actuall 2pi (6.28318), which happens to correspond
   to the circumfrence of a circle with a radius of 1
   */
-  Document.write( Math.sin(frequency * i)  );
+  // Document.write( Math.sin(frequency * i)  );
+  sineVals.push(Math.sin(frequency*i));
+}
+
+
+
+function byte2Hex(n)
+{
+  var nybHexString = "0123456789ABCDEF";
+  return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
+}
+function RGB2Color(r,g,b)
+{
+  return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 }
