@@ -146,28 +146,17 @@ var generatePattern = function(step){
   // $("#i1").append('<br>')
   for (var i = 0; i < 39; ++i)
   {
-     v = Math.sin(frequency*i) * amplitude + center;
+    // determine sinValue
+    v = Math.sin(frequency*i) * amplitude + center;
 
-     // Note that &#9608; is a unicode character that makes a solid block
-    //  document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>');
-    //  $("#i0").append(document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>'))
-    // for (var i = 0; i < numColors/3; i++) {
-    //   $("#i"+i).append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
-    // }
+    // Note that &#9608; is a unicode character that makes a solid block
+    // Note we're incrementing the green and blue values by a constant (r, g+const, b+(const*2))
+    // to the 0th elem, append the color pattern
     $("#i0").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
-    // $("#i1").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
-    // $("#i2").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
-    // $("#i3").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
-    // $("#i4").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
-
-    // for (var i = 0; i < numColors/3; i++) {
-    //   id = "i"+i
-    //   $(id).append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
-    // }
   }
+  // apply a br at the end of each row
   $("#i0").append('<br>')
 }
-console.log(numColors/3)
 
 // generateGrayScale()
 
