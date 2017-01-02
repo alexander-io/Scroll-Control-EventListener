@@ -97,9 +97,11 @@ for (var i = 0; i < numColors; i++) {
 var addlistener = function(elem,i,top){
 
   // assign click event listener to each elem
-  elem.click(function(){
+  // elem.click(function(){
+  elem.mouseover(function(){
     // for each click event call the scrollTo functio to navigate to the appopriate colorLocator Y value offset from top
     window.scrollTo(1000,colorLocator[i].off.top)
+    console.log('hello??')
   })
 }
 
