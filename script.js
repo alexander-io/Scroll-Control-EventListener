@@ -97,53 +97,15 @@ for (var i = 0; i < numColors; i++) {
   addlistener($("#z"+i), i, 10)
 }
 
-
-// // cast a number of sin waves at a specified frequency
-// var sineVals = []
-// var frequency = .3;
-// for (var i = 0; i < 32; ++i)
-// {
-//   /*
-//   note, sine wave patterns start to repeat when frequency*i is equal to about 6.2
-//   the precise value where it repeats is actuall 2pi (6.28318), which happens to correspond
-//   to the circumfrence of a circle with a radius of 1
-//   */
-//   // Document.write( Math.sin(frequency * i)  );
-//   // sineVals.push(Math.sin(frequency*i));
-//
+// thanks to http://krazydad.com/tutorials/makecolors.php
 //   // SINE WAVE OSCILATION FORMULA :
 //   // value = Math.sin(frequency*increment)*amplitude + center;
-//   sineVals.push(Math.sin(frequency*i)*128+127);
-// }
-
-
-
-
-// thanks to http://krazydad.com/tutorials/makecolors.php
-var generateGrayScale = function(){
-  var frequency = .3;
-  var amplitude = 127;
-  var center = 128;
-  for (var i = 0; i < 32; ++i)
-  {
-     v = Math.sin(frequency*i) * amplitude + center;
-
-     // Note that &#9608; is a unicode character that makes a solid block
-    //  document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>');
-    //  $("#i0").append(document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>'))
-    $("#i0").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>' + '</span>')
-  }
-}
-// thanks to http://krazydad.com/tutorials/makecolors.php
 var generatePattern = function(step){
   var frequency = .3;
   var amplitude = 127;
   var center = 128;
-  // for (var i = 0; i < numColors; i++) {
-  //   $("#i"+i).append('<br>')
-  // }
-  // $("#i0").append('<br>')
-  // $("#i1").append('<br>')
+
+  // for each unicode character in the row, calculate a sine value, translate it to rgb, assign it to unicode character, and append it to the 0th element
   for (var i = 0; i < 39; ++i)
   {
     // determine sinValue
@@ -158,14 +120,12 @@ var generatePattern = function(step){
   $("#i0").append('<br>')
 }
 
-// generateGrayScale()
-
+// determine the number of rows and call the generate pattern for each row
 var numRows = 18;
 for (var i = 0; i < numRows; i++) {
   generatePattern(i*15)
 }
 
-// console.log('sine vale array  : ', sineVals)
 // thanks to http://krazydad.com/tutorials/makecolors.php
 function byte2Hex(n)
 {
