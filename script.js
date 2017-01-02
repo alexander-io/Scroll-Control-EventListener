@@ -12,31 +12,33 @@ var color
 var colorLocator = []
 var colorLocatorC = []
 var id
-var frequency = .2;
+var frequency = .1;
 var amplitude = 127;
 var center = 128;
 var step
+var stepMultiplier = 7
+var blueGreenDifference =  30
 for (var i = 0; i < numColors; i++) {
 
   // designate id
   id = "i"+i
-  step=i*5
+  step=i*stepMultiplier
   // append to DOM the row, and colum for each color w/ corresponding id
   var alpha = $(".section").append("<div class=\"row\"><div class=\"col s12 m12 l12\" id=\"i" +i+"\"></div></div>")
 
   v = Math.sin(frequency*i) * amplitude + center;
   //
-  console.log('rgb to color result : ', RGB2Color(v,v+step,v+step+50))
+  console.log('rgb to color result : ', RGB2Color(v,v+step,v+step+blueGreenDifference))
 
   // call the increment rgb color function to change the values of r, g, and b
   // incrementColor(5)
   // next plug those cahnged values into the background color of the div
-  $("#i"+i).css("background-color", RGB2Color(v,v+step,v+step+30))
+  $("#i"+i).css("background-color", RGB2Color(v,v+step,v+step+blueGreenDifference))
   $("#i"+i).css("padding", "0px")
 
 
-  colorLocator.push({color:RGB2Color(v,v+step,v+step+30), id:"#i"+i, off:$("#i"+i).offset()})
-  colorLocatorC.push({color:RGB2Color(v,v+step,v+step+30), id:"#i"+i, off:$("#i"+i).offset()})
+  colorLocator.push({color:RGB2Color(v,v+step,v+step+blueGreenDifference), id:"#i"+i, off:$("#i"+i).offset()})
+  colorLocatorC.push({color:RGB2Color(v,v+step,v+step+blueGreenDifference), id:"#i"+i, off:$("#i"+i).offset()})
 
   // var beta = $("body").append("<div id=\"z"+i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:black; left:20px; top:20px;\"></div>")
   document.getElementById(id).addEventListener("click",function(){
@@ -102,7 +104,7 @@ var generatePattern = function(step){
     // Note that &#9608; is a unicode character that makes a solid block
     // Note we're incrementing the green and blue values by a constant (r, g+const, b+(const*2))
     // to the 0th elem, append the color pattern
-    $("#i0").append('<span style=\"margin:0px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+30) + '">&#9608;</font>' + '</span>')
+    $("#i0").append('<span style=\"margin:0px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+blueGreenDifference) + '">&#9608;</font>' + '</span>')
   }
   // apply a br at the end of each row
   $("#i0").append('<br>')
