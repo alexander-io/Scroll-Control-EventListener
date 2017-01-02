@@ -72,7 +72,7 @@ for (var i = 0; i < numColors; i++) {
   id = "z"+i
   // multiply the iterator by 110, currently 10px greater than the horizontal-div's height
   topval=i*110
-  // append to the body the fixed position control divs 
+  // append to the body the fixed position control divs
   var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:20px;\"></div>")
 }
 
@@ -94,4 +94,17 @@ for (var i = 0; i < numColors; i++) {
 
   // call the add listener function to assign click event listners to each control element
   addlistener($("#z"+i), i, 10)
+}
+
+
+// cast a number of sin waves at a specified frequency
+var frequency = .3;
+for (var i = 0; i < 32; ++i)
+{
+  /*
+  note, sine wave patterns start to repeat when frequency*i is equal to about 6.2
+  the precise value where it repeats is actuall 2pi (6.28318), which happens to correspond
+  to the circumfrence of a circle with a radius of 1
+  */
+  Document.write( Math.sin(frequency * i)  );
 }
