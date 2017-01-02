@@ -109,8 +109,16 @@ for (var i = 0; i < 32; ++i)
   */
   // Document.write( Math.sin(frequency * i)  );
   // sineVals.push(Math.sin(frequency*i));
+
+  // SINE WAVE OSCILATION FORMULA :
+  // value = Math.sin(frequency*increment)*amplitude + center;
   sineVals.push(Math.sin(frequency*i)*128+127);
 }
+
+
+
+
+
 
 console.log('sine vale array  : ', sineVals)
 // thanks to http://krazydad.com/tutorials/makecolors.php
