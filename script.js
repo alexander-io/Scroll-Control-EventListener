@@ -65,6 +65,7 @@ for (var i = 0; i < numColors; i++) {
   })
 }
 
+console.log('window height : ', $(window).height())
 // the topval variable is used to track the position of the horizontal div's y axis
 var topval = 0
 // this loop is used to append the fixed position controls to the left of the screen
@@ -72,7 +73,9 @@ for (var i = 0; i < numColors; i++) {
   // create a unique id based on the i value to assign each elem
   id = "z"+i
   // multiply the iterator by 110, currently 10px greater than the horizontal-div's height
-  topval=i*110
+  // topval=i*110
+  topval = $(window).height()/numColors
+  // console.log('top val : ', topval)
   // append to the body the fixed position control divs
   var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:20px;\"></div>")
 }
@@ -91,7 +94,7 @@ var addlistener = function(elem,i,top){
 for (var i = 0; i < numColors; i++) {
   // assign a temporary id variable to store the id value of the control elements
   id = "z"+i
-  console.log('que? : ', $("#z"+i))
+  // console.log('que? : ', $("#z"+i))
 
   // call the add listener function to assign click event listners to each control element
   addlistener($("#z"+i), i, 10)
@@ -99,9 +102,11 @@ for (var i = 0; i < numColors; i++) {
 
 // console.log('first elem height : ', $("#i0").height())
 
-console.log('first elem width : ', $("#i0").width())
+// console.log('first elem width : ', $("#i0").width())
 
-console.log('div 10 : ', $("#i0").width()/16)
+// console.log('div 10 : ', $("#i0").width()/16)
+
+
 $("body").append('<span id=\"token\"style=\"margin:0px;visibility:hidden;\">' + '<font>&#9608;</font>' + '</span>')
 var uniWidth = $("#token").width()
 // thanks to http://krazydad.com/tutorials/makecolors.php
