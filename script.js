@@ -1,6 +1,5 @@
 
-$(document).ready(function(){
-})
+$(document).ready(function(){})
 var r = 0
 var g = 0
 var b = 0
@@ -54,8 +53,6 @@ for (var i = 0; i < numColors; i++) {
 
   colorLocator.push({color:{r:r,g:g,b:b}, id:"#i"+i, off:$("#i"+i).offset()})
   // $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
-  // console.log('offset: ',$("#i"+i).offset())
-
 
   // var beta = $("body").append("<div id=\"z"+i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:black; left:20px; top:20px;\"></div>")
   document.getElementById(id).addEventListener("click",function(){
@@ -63,63 +60,31 @@ for (var i = 0; i < numColors; i++) {
     console.log('ayy')
   })
 }
-// console.log('color locator array : ', colorLocator[0].off.top)
 
   var topval = 0
   for (var i = 0; i < numColors; i++) {
     id = "z"+i
     topval=i*110
-    // console.log('color locator : ', colorLocator[i].color.r)
 
     var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:20px;\"></div>")
-    // console.log($("#z"+i))
-    // console.log('elem :', document.getElementById(id))
-    // add event listener
-    // document.getElementById(id).addEventListener("click",function(){
-    //   // console.log('ello')
-    //   console.log('elem :', document.getElementById(id))
-    //   // window.scrollTo(1000,1000)
-    //   console.log('color lllll : ', colorLocator[i])
-    //   // console.log(colorLocator[i])
-    //
-    // })
   }
 
-// console.log('color locator array : ', colorLocator)
-
+// add event listener to each controll elemnt to scrollTo the appropriate area on page
 var addlistener = function(elem,i,top){
-  // console.log('add listener working ')
-  // console.log(colorLocator[i].off.top)
-  elem.click(function(){
-    // console.log(colorLocator[i].off.top)
-    window.scrollTo(1000,colorLocator[i].off.top)
-    console.log('ayy')
-  })
 
+  // assign click event listener to each elem
+  elem.click(function(){
+    // for each click event call the scrollTo functio to navigate to the appopriate colorLocator Y value offset from top
+    window.scrollTo(1000,colorLocator[i].off.top)
+  })
 }
 
+// loop through the controller and add event listeners to each element in the dom
 for (var i = 0; i < numColors; i++) {
+  // assign a temporary id variable to store the id value of the control elements
   id = "z"+i
   console.log('que? : ', $("#z"+i))
 
-  // $("#z"+i).click(function() {
-  //   // alert( "Handler for .click() called." );
-  //   console.log('ello')
-  // });
-  // $("#z"+i).click(function(){
-  //
-  //   console.log(colorLocator[i])
-  // })
+  // call the add listener function to assign click event listners to each control element
   addlistener($("#z"+i), i, 10)
-
-  // console.log('elem : ', document.getElementById("z6"))
-  // console.log(document.getElementById(id))
-  // document.getElementById(id).addEventListener("click",function(){
-  //   // console.log('ello')
-  //   console.log('elem :', document.getElementById(id))
-  //   // window.scrollTo(1000,1000)
-  //   console.log('color lllll : ', colorLocator[i])
-  //   // console.log(colorLocator[i])
-  //
-  // })
 }
