@@ -53,6 +53,7 @@ for (var i = 0; i < numColors; i++) {
   incrementColor(5)
   // next plug those cahnged values into the background color of the div
   $("#i"+i).css("background-color", "rgb(" + r + "," + g + "," + b + ")")
+  $("#i"+i).css("padding", "0px")
 
   colorLocator.push({color:{r:r,g:g,b:b}, id:"#i"+i, off:$("#i"+i).offset()})
   // $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
@@ -97,30 +98,85 @@ for (var i = 0; i < numColors; i++) {
 }
 
 
-// cast a number of sin waves at a specified frequency
-var sineVals = []
-var frequency = .3;
-for (var i = 0; i < 32; ++i)
-{
-  /*
-  note, sine wave patterns start to repeat when frequency*i is equal to about 6.2
-  the precise value where it repeats is actuall 2pi (6.28318), which happens to correspond
-  to the circumfrence of a circle with a radius of 1
-  */
-  // Document.write( Math.sin(frequency * i)  );
-  // sineVals.push(Math.sin(frequency*i));
+// // cast a number of sin waves at a specified frequency
+// var sineVals = []
+// var frequency = .3;
+// for (var i = 0; i < 32; ++i)
+// {
+//   /*
+//   note, sine wave patterns start to repeat when frequency*i is equal to about 6.2
+//   the precise value where it repeats is actuall 2pi (6.28318), which happens to correspond
+//   to the circumfrence of a circle with a radius of 1
+//   */
+//   // Document.write( Math.sin(frequency * i)  );
+//   // sineVals.push(Math.sin(frequency*i));
+//
+//   // SINE WAVE OSCILATION FORMULA :
+//   // value = Math.sin(frequency*increment)*amplitude + center;
+//   sineVals.push(Math.sin(frequency*i)*128+127);
+// }
 
-  // SINE WAVE OSCILATION FORMULA :
-  // value = Math.sin(frequency*increment)*amplitude + center;
-  sineVals.push(Math.sin(frequency*i)*128+127);
+
+
+
+// thanks to http://krazydad.com/tutorials/makecolors.php
+var generateGrayScale = function(){
+  var frequency = .3;
+  var amplitude = 127;
+  var center = 128;
+  for (var i = 0; i < 32; ++i)
+  {
+     v = Math.sin(frequency*i) * amplitude + center;
+
+     // Note that &#9608; is a unicode character that makes a solid block
+    //  document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>');
+    //  $("#i0").append(document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>'))
+    $("#i0").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>' + '</span>')
+  }
+}
+// thanks to http://krazydad.com/tutorials/makecolors.php
+var generatePattern = function(step){
+  var frequency = .3;
+  var amplitude = 127;
+  var center = 128;
+  // for (var i = 0; i < numColors; i++) {
+  //   $("#i"+i).append('<br>')
+  // }
+  // $("#i0").append('<br>')
+  // $("#i1").append('<br>')
+  for (var i = 0; i < 39; ++i)
+  {
+     v = Math.sin(frequency*i) * amplitude + center;
+
+     // Note that &#9608; is a unicode character that makes a solid block
+    //  document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>');
+    //  $("#i0").append(document.write( '<font color="' + RGB2Color(v,v,v) + '">&#9608;</font>'))
+    // for (var i = 0; i < numColors/3; i++) {
+    //   $("#i"+i).append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+    // }
+    $("#i0").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+    // $("#i1").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+    // $("#i2").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+    // $("#i3").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+    // $("#i4").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+
+    // for (var i = 0; i < numColors/3; i++) {
+    //   id = "i"+i
+    //   $(id).append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+    // }
+  }
+  $("#i0").append('<br>')
+}
+console.log(numColors/3)
+
+// generateGrayScale()
+
+var numRows = 18;
+for (var i = 0; i < numRows; i++) {
+  generatePattern(i*15)
 }
 
-
-
-
-
-
-console.log('sine vale array  : ', sineVals)
+// console.log('sine vale array  : ', sineVals)
 // thanks to http://krazydad.com/tutorials/makecolors.php
 function byte2Hex(n)
 {
