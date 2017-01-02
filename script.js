@@ -34,6 +34,9 @@ var permuteRGB = function(){
 var numColors = 15
 var color
 
+// color locator array to hold data corresponding to
+// the relationship between the horizontal divs, control
+// elements, and their scrollTop/offset position
 var colorLocator = []
 
 var id
@@ -61,13 +64,17 @@ for (var i = 0; i < numColors; i++) {
   })
 }
 
-  var topval = 0
-  for (var i = 0; i < numColors; i++) {
-    id = "z"+i
-    topval=i*110
-
-    var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:20px;\"></div>")
-  }
+// the topval variable is used to track the position of the horizontal div's y axis
+var topval = 0
+// this loop is used to append the fixed position controls to the left of the screen
+for (var i = 0; i < numColors; i++) {
+  // create a unique id based on the i value to assign each elem
+  id = "z"+i
+  // multiply the iterator by 110, currently 10px greater than the horizontal-div's height
+  topval=i*110
+  // append to the body the fixed position control divs 
+  var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:20px;\"></div>")
+}
 
 // add event listener to each controll elemnt to scrollTo the appropriate area on page
 var addlistener = function(elem,i,top){
