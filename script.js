@@ -108,11 +108,12 @@ for (var i = 0; i < 32; ++i)
   to the circumfrence of a circle with a radius of 1
   */
   // Document.write( Math.sin(frequency * i)  );
-  sineVals.push(Math.sin(frequency*i));
+  // sineVals.push(Math.sin(frequency*i));
+  sineVals.push(Math.sin(frequency*i)*128+127);
 }
 
-
-
+console.log('sine vale array  : ', sineVals)
+// thanks to http://krazydad.com/tutorials/makecolors.php
 function byte2Hex(n)
 {
   var nybHexString = "0123456789ABCDEF";
