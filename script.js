@@ -31,7 +31,7 @@ var permuteRGB = function(){
 }
 
 // permuteRGB()
-var numColors = 15
+var numColors = 35
 var color
 
 // color locator array to hold data corresponding to
@@ -74,10 +74,13 @@ for (var i = 0; i < numColors; i++) {
   id = "z"+i
   // multiply the iterator by 110, currently 10px greater than the horizontal-div's height
   // topval=i*110
-  topval = $(window).height()/numColors
-  // console.log('top val : ', topval)
+
+  // $(window).height()/numColors
+  var boxheight = $(window).height()/numColors
+  topval = (i*boxheight)
+  console.log('top val : ', topval)
   // append to the body the fixed position control divs
-  var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:20px;\"></div>")
+  var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:"+boxheight+"px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:15px;\"></div>")
 }
 
 // add event listener to each controll elemnt to scrollTo the appropriate area on page
