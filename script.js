@@ -40,20 +40,29 @@ var color
 var colorLocator = []
 
 var id
-
+var frequency = .3;
+var amplitude = 127;
+var center = 128;
+var step
 for (var i = 0; i < numColors; i++) {
 
   // designate id
   id = "i"+i
-
+  step=i*15
   // append to DOM the row, and colum for each color w/ corresponding id
   var alpha = $(".section").append("<div class=\"row\"><div class=\"col s12 m12 l12\" id=\"i" +i+"\"></div></div>")
+
+  v = Math.sin(frequency*i) * amplitude + center;
+  //
+  console.log('rgb to color result : ', RGB2Color(v,v+step,v+step+50))
 
   // call the increment rgb color function to change the values of r, g, and b
   incrementColor(5)
   // next plug those cahnged values into the background color of the div
-  $("#i"+i).css("background-color", "rgb(" + r + "," + g + "," + b + ")")
+  // $("#i"+i).css("background-color", "rgb(" + r + "," + g + "," + b + ")")
+  $("#i"+i).css("background-color", RGB2Color(v,v+step,v+step+50))
   $("#i"+i).css("padding", "0px")
+
 
   colorLocator.push({color:{r:r,g:g,b:b}, id:"#i"+i, off:$("#i"+i).offset()})
   // $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
@@ -78,7 +87,8 @@ for (var i = 0; i < numColors; i++) {
   // $(window).height()/numColors
   var boxheight = $(window).height()/numColors
   topval = (i*boxheight)
-  console.log('top val : ', topval)
+  // console.log('top val : ', topval)
+
   // append to the body the fixed position control divs
   var beta = $("body").append("<div id=\"z" +i+"\" class=\"control\" style=\"position:fixed; height:"+boxheight+"px; width:100px; background-color:rgb("+colorLocator[i].color.r + "," + colorLocator[i].color.g + "," + colorLocator[i].color.b + "); left:20px; top:"+topval+"px; margin:15px;\"></div>")
 }
