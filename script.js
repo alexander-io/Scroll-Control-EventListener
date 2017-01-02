@@ -37,12 +37,10 @@ for (var i = 0; i < numColors; i++) {
 
   colorLocator.push({color:RGB2Color(v,v+step,v+step+30), id:"#i"+i, off:$("#i"+i).offset()})
   colorLocatorC.push({color:RGB2Color(v,v+step,v+step+30), id:"#i"+i, off:$("#i"+i).offset()})
-  // $("#i"+i).css("background-color", "rgb(" +rgbvals[i].r + "," +rgbvals[i].g+","+rgbvals[i].b+ ")")
 
   // var beta = $("body").append("<div id=\"z"+i+"\" class=\"control\" style=\"position:fixed; height:100px; width:100px; background-color:black; left:20px; top:20px;\"></div>")
   document.getElementById(id).addEventListener("click",function(){
     window.scrollTo(0,0)
-    console.log('ayy')
   })
 }
 
