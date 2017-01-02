@@ -97,6 +97,13 @@ for (var i = 0; i < numColors; i++) {
   addlistener($("#z"+i), i, 10)
 }
 
+// console.log('first elem height : ', $("#i0").height())
+
+console.log('first elem width : ', $("#i0").width())
+
+console.log('div 10 : ', $("#i0").width()/16)
+$("body").append('<span id=\"token\"style=\"margin:0px;visibility:hidden;\">' + '<font>&#9608;</font>' + '</span>')
+var uniWidth = $("#token").width()
 // thanks to http://krazydad.com/tutorials/makecolors.php
 //   // SINE WAVE OSCILATION FORMULA :
 //   // value = Math.sin(frequency*increment)*amplitude + center;
@@ -106,7 +113,7 @@ var generatePattern = function(step){
   var center = 128;
 
   // for each unicode character in the row, calculate a sine value, translate it to rgb, assign it to unicode character, and append it to the 0th element
-  for (var i = 0; i < 39; ++i)
+  for (var i = 0; i < $("#i0").width()/uniWidth; ++i)
   {
     // determine sinValue
     v = Math.sin(frequency*i) * amplitude + center;
@@ -114,7 +121,7 @@ var generatePattern = function(step){
     // Note that &#9608; is a unicode character that makes a solid block
     // Note we're incrementing the green and blue values by a constant (r, g+const, b+(const*2))
     // to the 0th elem, append the color pattern
-    $("#i0").append('<span style=\"margin:5px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
+    $("#i0").append('<span style=\"margin:0px;\">' + '<font color="' + RGB2Color(v,v+step,v+step+50) + '">&#9608;</font>' + '</span>')
   }
   // apply a br at the end of each row
   $("#i0").append('<br>')
